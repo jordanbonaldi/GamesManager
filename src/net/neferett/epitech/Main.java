@@ -28,23 +28,24 @@ public class Main extends CreateCommand {
 	public static Main getInstance() {
 		return instance;
 	}
+	
+	private GamesLoader gl;
+	
+	public GamesLoader getGl() {
+		return gl;
+	}
 
 	public static void main(final String[] args) throws IOException, JSONException {
 		instance = new Main();
 		instance.mainaddr = "149.202.65.5";
-		instance.mainport = 15000;
 
-		if (args.length == 0) {
-			System.out.println("Make sure to set the port before relaunching the server");
-			return;
-		}
-		instance = new Main();
-		if (args.length == 1)
-			instance.setGamesConfig("config.yml");
-		else
-			instance.setGamesConfig(args[1]);
-
-		instance.setGames(new GamesLoader().getGames());
+		instance.setGamesConfig("config.yml");		
+		instance.setGames((instance.gl = new GamesLoader()).getGames());
+		
+		instance.mainport = args.length == 1 ? Integer.parseInt(args[0]) : instance.getGl().getPort();
+		
+		System.out.println("Started on port " + instance.mainport);
+		
 		CreateCmd("help", new helpCommand());
 		CreateCmd("exit", new exitCommand());
 		CreateCmd("list", new ListCommand());

@@ -11,6 +11,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Neferett/.m2/repository/SocketAPI/SocketAPI/0.0.1-SNAPSHOT/SocketAPI-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SocketAPI"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
