@@ -25,15 +25,16 @@ public class exitCommand extends Commands {
 				});
 			});
 
+			Main.getInstance().getConsole().Disable();
+			
 			try {
 				Thread.sleep(10000);
 			} catch (final InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			Main.getInstance().getConsole().Disable();
-
 			new Execute("rm", "-rf", "running/").ExecuteCommand();
+			
 			System.exit(0);
 		}).start();
 		return true;

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import net.neferett.epitech.Main;
-import net.neferett.epitech.Games.games.Games;
-import net.neferett.epitech.Games.games.GamesLoader;
+import net.neferett.epitech.Games.GamesLoader;
+import net.neferett.epitech.Games.GamesManager;
 import net.neferett.epitech.console.commandsManagers.Commands;
 
 public class RefreshGames extends Commands {
@@ -19,7 +19,7 @@ public class RefreshGames extends Commands {
 		if (args.length != 1)
 			System.out.println("Usage: reload");
 		try {
-			final HashMap<String, Games> games = new GamesLoader().getGames();
+			final HashMap<String, GamesManager> games = new GamesLoader().getGames();
 			games.forEach((gamename, game) -> {
 				if (!Main.getInstance().getGames().containsKey(gamename))
 					Main.getInstance().getGames().put(gamename, game);
