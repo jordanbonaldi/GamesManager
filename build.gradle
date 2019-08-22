@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+group 'GamesManager'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+task buildEngine(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'GamesManager SoftWare',
+                'Implementation-Version': version,
+                'Main-Class': 'net.neferett.Main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+test {
+    reports.junitXml.destination = file("$buildDir/xml")
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src"]
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile name: 'SocketAPI-0.0.1-SNAPSHOT'
+}

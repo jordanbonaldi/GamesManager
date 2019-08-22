@@ -2,8 +2,9 @@ package net.neferett.console.commands;
 
 import java.util.Map.Entry;
 
+import net.neferett.Main;
 import net.neferett.console.commandsManagers.Commands;
-import net.neferett.console.commandsManagers.CreateCommand;
+import net.neferett.console.commandsManagers.CommandCreator;
 
 public class HelpCommand extends Commands{
 
@@ -35,7 +36,7 @@ public class HelpCommand extends Commands{
 	public boolean onCommand(String cmd, String[] args) {
 		System.out.println(fh);
 		System.out.println("");
-		for (Entry<String, Commands> entry : CreateCommand.cmd.entrySet())
+		for (Entry<String, Commands> entry : Main.getInstance().getCreator().getCmd().entrySet())
 			System.out.println(getName(entry) + "  --  " + entry.getValue().getDesc());
 		System.out.println("");
 		System.out.println(fh);

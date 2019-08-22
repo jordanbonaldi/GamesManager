@@ -11,7 +11,7 @@ public class CommandCreator
     }
     
     public CommandCreator() {
-    	this.cmd = new HashMap<String, Commands>();
+    	this.cmd = new HashMap<>();
     }
     
     public void addCmd(final String cmdname, final Commands obj) {

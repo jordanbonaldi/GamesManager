@@ -10,7 +10,7 @@ import net.neferett.utils.*;
 public abstract class ConsoleManager implements Runnable
 {
     private String msg;
-    private Utils utils;
+    protected Utils utils;
     private Thread thread;
     
     private CommandCreator creator;

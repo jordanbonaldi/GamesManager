@@ -2,6 +2,7 @@ package net.neferett.plugins;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class PluginManager {
 
@@ -22,7 +23,7 @@ public class PluginManager {
 	public void loadPluginsFromFolder(String path) {
 		File folder = new File(path);
 		
-		for (final File f : folder.listFiles()) {
+		for (final File f : Objects.requireNonNull(folder.listFiles())) {
 			if (f.getName().contains(".jar")) {
 				String name = f.getName().substring(0, f.getName().length() - 4);
 				System.out.println("Loading plugin : " + name);
