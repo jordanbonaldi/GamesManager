@@ -1,5 +1,6 @@
 package net.neferett.socketCommands;
 
+import lombok.SneakyThrows;
 import net.neferett.Main;
 import net.neferett.games.GamesManager;
 
@@ -13,15 +14,18 @@ public class StopCommand extends SocketCommand {
 		super("stop");
 	}
 
+	@SneakyThrows
 	public void getGames(String[] args) {
 		final String[] path;
 		final String games;
-		final int id;
+		int id = 0;
 		
 		if (args[1].contains("/")) {
 			path = args[1].split("/");
 			games = path[path.length - 2];
-			id = Integer.parseInt(path[path.length - 1]);
+			try {
+				id = Integer.parseInt(path[path.length - 1]);
+			} catch (Exception ignored) { }
 		} else {
 			games = args[1];
 			id = Integer.parseInt(args[2]);
